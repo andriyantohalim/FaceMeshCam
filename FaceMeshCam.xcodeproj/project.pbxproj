@@ -16,6 +16,8 @@
 		EF0E2F6B2C610DEB00DD0B57 /* FaceMeshCamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E2F6A2C610DEB00DD0B57 /* FaceMeshCamUITestsLaunchTests.swift */; };
 		EF0E2F782C610E3C00DD0B57 /* FaceMeshCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E2F772C610E3C00DD0B57 /* FaceMeshCamView.swift */; };
 		EF0E2F7A2C610E4200DD0B57 /* FaceMeshCamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E2F792C610E4200DD0B57 /* FaceMeshCamViewModel.swift */; };
+		EF0E2F7C2C61132F00DD0B57 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EF0E2F7B2C61132F00DD0B57 /* README.md */; };
+		EF0E2F7E2C6114C300DD0B57 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EF0E2F7D2C6114C300DD0B57 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		EF0E2F6A2C610DEB00DD0B57 /* FaceMeshCamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceMeshCamUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF0E2F772C610E3C00DD0B57 /* FaceMeshCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceMeshCamView.swift; sourceTree = "<group>"; };
 		EF0E2F792C610E4200DD0B57 /* FaceMeshCamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceMeshCamViewModel.swift; sourceTree = "<group>"; };
+		EF0E2F7B2C61132F00DD0B57 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EF0E2F7D2C6114C300DD0B57 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 		EF0E2F412C610DEA00DD0B57 = {
 			isa = PBXGroup;
 			children = (
+				EF0E2F7D2C6114C300DD0B57 /* LICENSE */,
+				EF0E2F7B2C61132F00DD0B57 /* README.md */,
 				EF0E2F772C610E3C00DD0B57 /* FaceMeshCamView.swift */,
 				EF0E2F792C610E4200DD0B57 /* FaceMeshCamViewModel.swift */,
 				EF0E2F4C2C610DEA00DD0B57 /* FaceMeshCam */,
@@ -237,7 +243,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0E2F7C2C61132F00DD0B57 /* README.md in Resources */,
 				EF0E2F552C610DEB00DD0B57 /* Preview Assets.xcassets in Resources */,
+				EF0E2F7E2C6114C300DD0B57 /* LICENSE in Resources */,
 				EF0E2F522C610DEB00DD0B57 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
