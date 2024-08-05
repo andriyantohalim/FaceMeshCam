@@ -17,12 +17,14 @@ struct FaceMeshCamView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text(viewModel.analysis)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .background(Color.black.opacity(0.7))
-                    .cornerRadius(5)
-                    .padding()
+                ForEach(viewModel.analysis, id: \.self) { analysis in
+                    Text(analysis)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.black.opacity(0.7))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
                 Spacer()
             }
         }
