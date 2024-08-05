@@ -12,7 +12,7 @@ import SceneKit
 class FaceMeshCamViewModel: NSObject, ObservableObject, ARSCNViewDelegate, ARSessionDelegate {
     var arSession: ARSession
     var arFaceTrackingConfiguration: ARFaceTrackingConfiguration
-    @Published var analysis: String = ""
+    @Published var analysis: [String] = []
     @Published var isFaceTracked: Bool = false
 
     override init() {
@@ -32,32 +32,51 @@ class FaceMeshCamViewModel: NSObject, ObservableObject, ARSCNViewDelegate, ARSes
         arSession.run(arFaceTrackingConfiguration, options: [.resetTracking, .removeExistingAnchors])
     }
 
-    func startSession() {
-        arSession.run(arFaceTrackingConfiguration, options: [.resetTracking, .removeExistingAnchors])
-    }
-
-    func pauseSession() {
-        arSession.pause()
-    }
-
     func handleFaceAnchor(_ anchor: ARFaceAnchor) {
-        let smileLeft = anchor.blendShapes[.mouthSmileLeft]
-        let smileRight = anchor.blendShapes[.mouthSmileRight]
-        let cheekPuff = anchor.blendShapes[.cheekPuff]
-        let tongue = anchor.blendShapes[.tongueOut]
+        let blendShapes = anchor.blendShapes
+        
+        let smileLeft = blendShapes[.mouthSmileLeft]?.decimalValue ?? 0.0
+        let smileRight = blendShapes[.mouthSmileRight]?.decimalValue ?? 0.0
+        let browDownLeft = blendShapes[.browDownLeft]?.decimalValue ?? 0.0
+        let browDownRight = blendShapes[.browDownRight]?.decimalValue ?? 0.0
+        let browInnerUp = blendShapes[.browInnerUp]?.decimalValue ?? 0.0
+        let eyeBlinkLeft = blendShapes[.eyeBlinkLeft]?.decimalValue ?? 0.0
+        let eyeBlinkRight = blendShapes[.eyeBlinkRight]?.decimalValue ?? 0.0
+        let cheekPuff = blendShapes[.cheekPuff]?.decimalValue ?? 0.0
+        let tongueOut = blendShapes[.tongueOut]?.decimalValue ?? 0.0
 
-        var newAnalysis = ""
-
-        if ((smileLeft?.decimalValue ?? 0.0) + (smileRight?.decimalValue ?? 0.0)) > 0.9 {
-            newAnalysis += "smile detected"
+        var newAnalysis: [String] = []
+        
+        // Smile Detection
+        if (smileLeft + smileRight) > 0.5 {
+            newAnalysis.append("You are smiling.")
         }
-
-        if cheekPuff?.decimalValue ?? 0.0 > 0.1 {
-            newAnalysis += "puffy cheeks"
+        
+        // Brow Down Detection
+        if (browDownLeft + browDownRight) > 0.3 {
+            newAnalysis.append("Your eyebrows are lowered.")
         }
-
-        if tongue?.decimalValue ?? 0.0 > 0.1 {
-            newAnalysis += "tongue sticked out"
+        
+        // Brow Inner Up Detection
+        if browInnerUp > 0.5 {
+            newAnalysis.append("Your eyebrows are raised.")
+        }
+        
+        // Eye Blink Detection
+        if (eyeBlinkLeft + eyeBlinkRight) > 1.0 {
+            newAnalysis.append("Your eyes are closed.")
+        } else if (eyeBlinkLeft + eyeBlinkRight) < 0.2 {
+            newAnalysis.append("Your eyes are wide open.")
+        }
+        
+        // Cheek Puff Detection
+        if cheekPuff > 0.3 {
+            newAnalysis.append("Your cheeks are puffed.")
+        }
+        
+        // Tongue Out Detection
+        if tongueOut > 0.1 {
+            newAnalysis.append("Your tongue is out.")
         }
 
         DispatchQueue.main.async {
