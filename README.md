@@ -1,6 +1,6 @@
 # FaceMeshCam
 
-FaceMeshApp is an iOS application that leverages ARKit and SwiftUI to provide real-time facial expression analysis using the front-facing TrueDepth camera. The app detects various facial expressions and displays them to the user in a simple and intuitive interface.
+FaceMeshCam is an iOS application that leverages ARKit and SwiftUI to provide real-time facial expression analysis using the front-facing TrueDepth camera. The app detects various facial expressions and displays them to the user in a simple and intuitive interface.
 
 
 ## Features
@@ -21,13 +21,13 @@ FaceMeshApp is an iOS application that leverages ARKit and SwiftUI to provide re
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/FaceMeshApp.git
-   cd FaceMeshApp
+   git clone https://github.com/yourusername/FaceMeshCam.git
+   cd FaceMeshCam
    ```
    
 2. **Open the project in Xcode**: 
    ```bash
-   open FaceMeshApp.xcodeproj
+   open FaceMeshCam.xcodeproj
    ```
    
 3. **Set the development team**:
